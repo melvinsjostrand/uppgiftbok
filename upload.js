@@ -1,11 +1,13 @@
 
 let form;
+let error;
 
   function init(){
     form = document.querySelector("form");
-    
+    error = document.getElementById("error");
     form.addEventListener("submit" , event=>{
         getFromData();
+        
 
         event.preventDefault();
     })
@@ -14,9 +16,11 @@ let form;
 
 
   async function getFromData(){
+   
 
     let author = form.elements.författare.value;
     let title = form.elements.titel.value
+
 
     console.log(author);
     console.log(title);
@@ -36,8 +40,9 @@ let form;
   }
 
   async function postFetch(json){
+  
     let path = "https://localhost:7210/Home";
-    const response = await fetch(path ,{
+    const response = await fetch(path,{
     method:"POST",
     mode:"cors",
     headers:{
@@ -46,5 +51,13 @@ let form;
     body:JSON.stringify(json)
  
   })
-  return response.status;
+  if(response.status === 201)
+  {
+    location.href = "index.html";
+  }
+  else
+  {
+    
+    error.innerHTML = "   det gick inte att ladda upp";
+  }
 }

@@ -1,5 +1,6 @@
 let json = [
-    {Author : "tim" , Title : "dator"}
+    {Author : "tim" , Title : "dator"},
+
 ]
 console.log(json)
 

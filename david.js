@@ -2,19 +2,29 @@
 //let myobejct = JSON.parse(myjson);
 let författare;
 let titel;
+let error;
 
-let books = {book: {
-    "author": "tim" , "title" : "dator"
-}}
+
+let json = []
 
 function init(){
-    books = document.getElementById("books");
-    for(element of books.book){
-        console.log(Element);
-        createTableRow(element);
-    }
+    json = document.getElementById("json");
+    error = document.getElementById("error");
+    getjson();
 }
 window.onload = init;
+
+
+async function getjson(){
+    let json = await GetFetch();
+
+    console.log(json);
+    for(Element of json)
+    {
+        console.log(Element);
+        createTableRow(Element);
+    }
+}
 
 
 function createTableRow(el){
@@ -24,10 +34,42 @@ function createTableRow(el){
     tr.appendChild(td);
 
     td = document.createElement("td");
-    td.innerHTML = el.titel;
+    td.innerHTML = el.title;
 
     tr.appendChild(td);
-    books.appendChild(tr);
     console.log(tr);
+    table.appendChild(tr);
 }
 
+async function GetFetch(){
+
+     let path = "https://localhost:7210/Home";
+    let response = await fetch(path);
+
+    if(response.status === 200)
+    {
+      console.log("Det gick att hämta böckerna");
+      let json = await response.json();
+      return json;
+    }
+    else
+    {
+      
+      error.innerHTML = "   Det gick inte att hämta böckerna";
+    }
+} 
+
+
+
+
+
+
+/*if(response.status === 200)
+{
+   
+    console.log("gick att hämta böckerna");
+}
+else
+{
+    console.log("Det gick inte att hämta böckerna")
+}*/
