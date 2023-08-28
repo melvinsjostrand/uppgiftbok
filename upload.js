@@ -22,23 +22,26 @@ let form;
     console.log(title);
 
 
-    Json={
-        "author":author,
-        "title":title
+    json={
+
+        "title":title,
+        "author":author
+  
     }
 
-    console.log(Json);
-    let status = await postFetch(Json);
+    console.log(json);
+    let status = await postFetch(json);
 
     console.log(status)
   }
 
   async function postFetch(json){
-    let path = "URL till server";
-    const response = await fetch(path , {
+    let path = "https://localhost:7210/Home";
+    const response = await fetch(path ,{
     method:"POST",
-    mode:"cors",
-    Headers:{
+    mode:"no-cors",
+    headers:{
+      "content-type":"application/json"
     },
     body:JSON.stringify(json)
  
