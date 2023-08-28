@@ -39,9 +39,9 @@ let form;
     let path = "https://localhost:7210/Home";
     const response = await fetch(path ,{
     method:"POST",
-    mode:"no-cors",
+    mode:"cors",
     headers:{
-      "content-type":"application/json"
+      "Content-Type":"application/json"
     },
     body:JSON.stringify(json)
  
