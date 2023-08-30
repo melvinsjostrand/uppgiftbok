@@ -73,7 +73,9 @@ li{
     text-decoration: none;
 }
 
-
+span{
+    padding-left: 20px;
+}
 
 ul{
     list-style-type: none;

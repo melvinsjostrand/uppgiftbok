@@ -55,7 +55,7 @@ async function GetFetch(){
     else
     {
       
-      error.innerHTML = "   Det gick inte att hämta böckerna";
+      error.innerHTML = "Det gick inte att hämta böckerna";
     }
 } 
 
